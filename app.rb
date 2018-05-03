@@ -32,6 +32,15 @@ get '/sign_up' do
   erb :sign_up
 end
 
+post 'sign_up' do
+  @user = User.create(
+    firstname: params[:firstname],
+    lastname: params[:lastname],
+    email: params[:email],
+    username: params[:username],
+    password: params[:password]
+  )
+  
 get '/profile' do 
   erb :profile
 end
