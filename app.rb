@@ -1,9 +1,17 @@
 require "sinatra"
 require "sinatra/activerecord"
-require "sinatra/flash"
+# require "sinatra/flash"
 require "./models"
 
-set :database, "sqlite3:app.db"
+configure :development do
+  set :database, "sqlite3:app.db"
+end
+
+configure :production do
+  set :database, ENV["DATABASE_URL"]
+end
+
+set :sessions, true
 
 
 get '/' do
@@ -32,15 +40,23 @@ get '/sign_up' do
   erb :sign_up
 end
 
-post 'sign_up' do
+post '/sign_up' do
   @user = User.create(
-    firstname: params[:firstname],
-    lastname: params[:lastname],
     email: params[:email],
     username: params[:username],
-    password: params[:password]
+    password: params[:password],
+    first_name: params[:firstname],
+    last_name: params[:lastname],
+    birthday: params[:birthday]
   )
-  
+
+  redirect "/profile"
+end
+
 get '/profile' do 
   erb :profile
+end
+
+get '/create_post' do 
+  erb :create_post
 end
