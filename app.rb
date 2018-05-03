@@ -7,13 +7,17 @@ set :database, "sqlite3:app.db"
 
 
 get '/' do
-    erb :home
-  end
+  erb :home
+end
 
 get '/sign_in' do 
-    erb :sign_in
+  erb :sign_in
 end
 
 get '/sign_up' do 
-    erb :sign_up
+  erb :sign_up
+end
+
+get '/profile' do 
+  erb :profile
 end
