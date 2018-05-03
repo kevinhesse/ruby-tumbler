@@ -15,7 +15,7 @@ get '/sign_in' do
   erb :sign_in
 end
 
-post '/sign-in' do 
+post '/sign_in' do 
   @user = User.find_by(username: params[:username])
 
   if @user && @user.password == params[:password]
@@ -23,7 +23,7 @@ post '/sign-in' do
     redirect '/'
 
   else 
-    redirect '/sign-up'
+    redirect '/sign_up'
   end
 end
 
