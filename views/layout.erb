@@ -26,6 +26,15 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       </ul>
+
+      <% if session[:user_id] %>
+        <ul class = "navbar-nav navbar-right">
+      <li class="nav-item">
+        <a class="nav-link" href="/sign_out">Sign out</a>
+      </li>
+      </ul>
+      <% else %>
+
       <ul class = "navbar-nav navbar-right">
       <li class="nav-item">
         <a class="nav-link" href="/sign_up">Sign Up</a>
@@ -34,6 +43,10 @@
         <a class="nav-link" href="/sign_in">already have an account? <u>sign in</u></a>
       </li>
     </ul>
+
+    <% end %>
+
+    
 
   </div>
 </nav>

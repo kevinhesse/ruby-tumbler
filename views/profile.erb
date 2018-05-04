@@ -1,9 +1,23 @@
 
-<p id = "profile-post">Your latest posts🍐 </p>
+<p id = "profile-post">Your latest posts🍐 
 <a href = "/create_post">
 <div class="float-right">
 <button type="submit" class="btn btn-primary mb-2">
 New Post
+</button>
+</a>
+</p>
+</div>
+
+<% @user.posts.all.reverse.each do |p| %> 
+    <%= p.title %><br>
+    <%= p.main_text %><br>
+<% end %>
+
+<div class = "float-right">
+<a href = "/delete_account">
+<button type="button" class="btn btn-danger">
+Delete account
 </button>
 </a>
 </div>

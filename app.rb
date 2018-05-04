@@ -25,10 +25,10 @@ end
 
 post '/sign_in' do 
   @user = User.find_by(username: params[:username])
-
+  # if user exists and user and password match, start session
   if @user && @user.password == params[:password]
     session[:user_id] = @user.id
-    redirect '/'
+    redirect '/profile'
 
   else 
     redirect '/sign_up'
@@ -49,14 +49,56 @@ post '/sign_up' do
     last_name: params[:lastname],
     birthday: params[:birthday]
   )
-
-  redirect "/profile"
-end
-
-get '/profile' do 
-  erb :profile
+  session[:user_id] = @user.id
+  redirect '/profile'
 end
 
 get '/create_post' do 
+  @user = User.find(session[:user_id])
+  
+  # @user = User.find(params[:username])
+
+# this will grab all posts
+  # @posts = Post.all
+
   erb :create_post
+end
+
+post '/create_post' do
+  @user = User.find(session[:user_id])
+  @post = Post.create(
+    user_id: @user.id,
+    title: params[:title],
+    main_text: params[:main_text]
+  )
+    redirect "/profile"
+  
+end
+
+
+
+
+
+get '/profile' do
+
+  @user = User.find(session[:user_id])
+  erb :profile
+end
+
+# post '/create_post' do 
+#   @user = User.find(session[:user_id])
+#   @post = Post.create(
+#     title: params[:title],
+#     main_text: params[:main_text]
+#   )
+#   redirect '/profile/:id'
+# end
+
+get '/sign_out' do
+  session[:user_id] = nil
+  redirect "/"
+end
+
+get '/delete_user' do 
+  # add deletion here?
 end
