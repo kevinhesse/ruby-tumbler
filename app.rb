@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/activerecord"
 # require "sinatra/flash"
 require "./models"
+require "sinatra/content_for"
 
 configure :development do
   set :database, "sqlite3:app.db"
@@ -85,20 +86,25 @@ get '/profile' do
   erb :profile
 end
 
-# post '/create_post' do 
-#   @user = User.find(session[:user_id])
-#   @post = Post.create(
-#     title: params[:title],
-#     main_text: params[:main_text]
-#   )
-#   redirect '/profile/:id'
-# end
 
 get '/sign_out' do
-  session[:user_id] = nil
+  @sign_out = session[:user_id] = nil
   redirect "/"
 end
 
-get '/delete_user' do 
-  # add deletion here?
+get '/delete_account' do 
+  @user = User.find(session[:user_id]).destroy
+  session[:user_id] = nil
+  erb :delete_account
+  
 end
+
+get'/browse' do
+  @posts = Post.all
+  erb :browse
+end
+
+post '/browse' do 
+  @posts = Post.all
+end
+

@@ -1,0 +1,8 @@
+<p>
+browse all posts
+</p>
+
+<% @posts.all.reverse.each do |post| %> 
+    <%= post.title %><br>
+    <%= post.main_text %><br>
+<% end %>

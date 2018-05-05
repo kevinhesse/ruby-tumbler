@@ -1,3 +1,7 @@
+<p>
+<%= @user.username%>
+<%= @user.email%>
+</p>
 
 <p id = "profile-post">Your latest posts🍐 
 <a href = "/create_post">
@@ -9,9 +13,11 @@ New Post
 </p>
 </div>
 
-<% @user.posts.all.reverse.each do |p| %> 
-    <%= p.title %><br>
-    <%= p.main_text %><br>
+<% %>
+
+<% @user.posts.all.reverse.each do |post| %> 
+    <%= post.title %><br>
+    <%= post.main_text %><br>
 <% end %>
 
 <div class = "float-right">
