@@ -15,8 +15,10 @@
 </head>
 <body>
   
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">MISE</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id = "nav-bar">
+  <a class="navbar-brand" href="/">
+    <img src="/images/logo.png" width="170" hieght="170" alt="">
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,16 +26,25 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
       </li>
       </ul>
+       
 
       <% if session[:user_id] %>
-        <ul class = "navbar-nav navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" href="/sign_out">Sign out</a>
-      </li>
-      </ul>
+
+          <div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/profile">profile</a>
+    <a class="dropdown-item" href="create_post">create post</a>
+    <a class="dropdown-item" href="/sign_out">sign out</a>
+    <a class = "dropdown-item" href="/account"> account </a>
+  </div>
+</div>
+
       <% else %>
 
       <ul class = "navbar-nav navbar-right">
@@ -56,7 +67,7 @@
 
 <%# fixed footer %>
 <nav class="navbar bottom navbar-light bg-light">
-  <a class="navbar-brand" href="#">Fixed bottom</a>
+  <a class="navbar-brand" href="#">MISE 2018 all rights reserved,</a>
 </nav>
 <%# bootstrap javaScrit link below %>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -108,3 +108,8 @@ post '/browse' do
   @posts = Post.all
 end
 
+
+get '/account' do 
+  erb :account
+end
+
