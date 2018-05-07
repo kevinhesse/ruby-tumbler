@@ -16,18 +16,18 @@ set :sessions, true
 
 
 get '/' do
-  @user = User.find(session[:user_id])
+  # @user = User.find(session[:user_id])
   erb :home
   # add 2 homepage for signed in or signed out
 end
 
-
 get '/sign_in' do 
+  # @user = User.find(session[:user_id])
   erb :sign_in
 end
 
 post '/sign_in' do 
-  @user = User.find_by(username: params[:username])
+  # @user = User.find_by(username: params[:username])
   # if user exists and user and password match, start session
   if @user && @user.password == params[:password]
     session[:user_id] = @user.id
@@ -104,24 +104,17 @@ get '/delete_account' do
 end
 
 get'/browse' do
-  @user = User.find(session[:user_id])
   @posts = Post.all
   erb :browse
 end
 
 post '/browse' do 
-  @user = User.find(session[:user_id])
   @posts = Post.all
 end
 
 
 get '/account' do 
   @user = User.find(session[:user_id])
-  "hello"
   erb :account
 end
 
-post '/account' do 
-  @user = User.find(session[:user_id])
-
-end
