@@ -1,8 +1,13 @@
+
 <p>
 browse all posts
 </p>
 
 <% @posts.all.reverse.each do |post| %> 
-    <%= post.title %><br>
-    <%= post.main_text %><br>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><%= post.title %></h1>
+    <p class="lead"><%= post.main_text %></p>
+  </div>
+</div>
 <% end %>

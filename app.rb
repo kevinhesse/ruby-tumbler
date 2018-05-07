@@ -72,6 +72,8 @@ post '/create_post' do
     title: params[:title],
     main_text: params[:main_text]
   )
+
+  
     redirect "/profile"
   
 end
@@ -110,6 +112,12 @@ end
 
 
 get '/account' do 
+
+  "hello"
   erb :account
 end
 
+post '/account' do 
+  @user = User.find(session[:user_id])
+
+end
