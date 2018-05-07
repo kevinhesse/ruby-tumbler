@@ -16,9 +16,11 @@ set :sessions, true
 
 
 get '/' do
+  @user = User.find(session[:user_id])
   erb :home
   # add 2 homepage for signed in or signed out
 end
+
 
 get '/sign_in' do 
   erb :sign_in
@@ -102,17 +104,19 @@ get '/delete_account' do
 end
 
 get'/browse' do
+  @user = User.find(session[:user_id])
   @posts = Post.all
   erb :browse
 end
 
 post '/browse' do 
+  @user = User.find(session[:user_id])
   @posts = Post.all
 end
 
 
 get '/account' do 
-
+  @user = User.find(session[:user_id])
   "hello"
   erb :account
 end
