@@ -19,7 +19,7 @@
     <img src="/images/logo.png" width="170" hieght="170" alt="">
   </a>
 
- <ul class = "navbar-nav navbar-right">
+   <ul class = "navbar-nav navbar-right">
       <li class="nav-item">
         <a class="nav-link" href="/browse">Browse</a>
       </li>
@@ -38,10 +38,12 @@
 
       <% if session[:user_id] %>
 
-          <div class="dropdown">
+<div class="dropdown">
+
   <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+    Signed in
   </button>
+
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="/profile">profile</a>
     <a class="dropdown-item" href="create_post">create post</a>

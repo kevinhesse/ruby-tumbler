@@ -11,7 +11,9 @@ background-color: #F1F1F1;
 }
 
 .img-thumbnail {
-
   margin-top: 100px;
 }
 
+#browse {
+  text-align: center;
+}
