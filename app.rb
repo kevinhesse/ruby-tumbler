@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/activerecord"
 require "./models"
 require "sinatra/content_for"
+require "pg"
 
 configure :development do
   set :database, "sqlite3:app.db"
